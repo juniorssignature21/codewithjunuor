@@ -1,0 +1,67 @@
+{% extends "basic.html" %}
+{% load static %}
+
+{% block title %}
+Code With Junior
+{% endblock title %}
+<link href="{% static "assets/img/img.png" rel="icon" %}">
+
+
+{% block hero %}
+
+<!-- Hero Section -->
+<section id="hero" class="hero section dark-background">
+
+    <img src="{% static "assets/img/img.png" %}" alt="" data-aos="fade-in" class="">
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+      <h2>John John</h2>
+      <p>I'm <span class="typed" data-typed-items="Designer, Developer, Freelancer">Designer</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
+    </div>
+
+  </section><!-- /Hero Section -->
+{% endblock hero %}
+{% block body %}
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong>{{message}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endblock body %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
