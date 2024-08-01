@@ -140,5 +140,5 @@ MESSAGE_TAGS = {
     messages.ERROR:'danger'
 }
 
-STATIC_ROOT = BASE_DIR / "static"
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# STATIC_ROOT = BASE_DIR / "static"
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
