@@ -4,6 +4,8 @@ from .models import *
 
 admin.site.register(Contact)
 admin.site.register(Blog)
+admin.site.register(Project_details)
+admin.site.register(Category)
 
 class InternshipAdmin(admin.ModelAdmin):
     list_display = ('fullname',

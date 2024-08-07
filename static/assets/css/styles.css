@@ -74,7 +74,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url('../img/img.png');
+    /* background: url('../img/img.png'); */
     background-repeat: no-repeat;
     background-position: cover;
     background-size: cover;

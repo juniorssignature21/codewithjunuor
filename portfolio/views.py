@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import Contact, Blog, Internship
+from .models import Contact, Blog, Internship, Project_details, Category
 
 # Create your views here.
 def home(request):
@@ -9,6 +9,11 @@ def handleblog(request):
     posts=Blog.objects.all()
     context={"posts":posts}
     return render(request, 'blog.html', context)
+
+def blog_details(request,pk):
+    posts = Blog.objects.get(id=pk)
+    context = {"posts": posts}
+    return render(request, "service-details.html", context)
 
 def about(request):
     return render(request, 'about.html')
@@ -69,3 +74,26 @@ def contact(request):
 
 def service(request):
     return render(request, 'home.html')
+
+def portfolio_cat(request, foo):
+    foo = foo.replace('-', '')
+    try:
+        category = Category.objects.get(name=foo)
+        proj_filter = Project_details.objects.filter(proj_category=category)
+        context = {"projects": proj_filter, "category":category}
+        return render(request, 'portfolio.html', context)
+    except:
+        messages.success(request, ("That category does not exist!!!"))
+        return redirect('/portfolio')
+        
+def portfolio(request):
+    projects = Project_details.objects.all()
+    context = {"projects": projects}
+    return render(request, "portfolio.html", context)
+
+
+def portfolio_details(request, pk):
+    proj_det = Project_details.objects.get(id=pk)
+    context = {"proj_det": proj_det}
+    return render(request, "portfolio-details.html", context)
+
