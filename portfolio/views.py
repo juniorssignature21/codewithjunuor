@@ -6,6 +6,9 @@ from .models import Contact, Blog, Internship, Project_details, Category
 def home(request):
     return render(request, 'home.html')
 def handleblog(request):
+    if not request.user.is_authenticated:
+        messages.warning(request, "Please login to access this page")
+        return redirect('/auth/login/')
     posts=Blog.objects.all()
     context={"posts":posts}
     return render(request, 'blog.html', context)
@@ -59,6 +62,9 @@ def internshipdetails(request):
     return render(request, 'intern.html')
 
 def contact(request):
+    if not request.user.is_authenticated:
+        messages.warning(request, "Please login to access this page")
+        return redirect('/auth/login/')
     
     if request.method=="POST":
         name=request.POST.get('name')
