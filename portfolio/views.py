@@ -1,25 +1,42 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Contact, Blog, Internship, Project_details, Category
+import datetime, time
 
 # Create your views here.
+date =  datetime.datetime.now()
+h = int(date.strftime('%H'))
+msg = "Good "
+if h < 12 :
+    msg += "Morning"
+elif h < 16 :
+    msg += "Afternoon"
+elif h < 21:
+    msg += "Evening"
+else:
+    msg = "Good Night"
+my_dict = {"insert_date": date, "insert_msg": msg}
+
+def greeting(request):
+    return render(request,'basic.html', context=my_dict)
+
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'home.html', context=my_dict)
 def handleblog(request):
     if not request.user.is_authenticated:
         messages.warning(request, "Please login to access this page")
         return redirect('/auth/login/')
     posts=Blog.objects.all()
-    context={"posts":posts}
+    context={"posts":posts, "insert_date":date, "insert_msg": msg}
     return render(request, 'blog.html', context)
 
 def blog_details(request,pk):
     posts = Blog.objects.get(id=pk)
-    context = {"posts": posts}
+    context = {"posts": posts, "insert_date":date, "insert_msg": msg}
     return render(request, "service-details.html", context)
 
 def about(request):
-    return render(request, 'about.html')
+    return render(request, 'about.html', context=my_dict)
 
 def internshipdetails(request):
     
@@ -59,7 +76,7 @@ def internshipdetails(request):
         messages.success(request, "Form is Submitted Successfully ✔")
         return redirect('/internshipdetails')
         
-    return render(request, 'intern.html')
+    return render(request, 'intern.html', context=my_dict)
 
 def contact(request):
     if not request.user.is_authenticated:
@@ -76,17 +93,17 @@ def contact(request):
         messages.success(request, "Message sent ✔.  Thanks for contacting us ")
         return redirect('/contact')
                 
-    return render(request, 'contact.html')
+    return render(request, 'contact.html', context=my_dict)
 
 def service(request):
-    return render(request, 'home.html')
+    return render(request, 'home.html', context=my_dict)
 
 def portfolio_cat(request, foo):
     foo = foo.replace('-', '')
     try:
         category = Category.objects.get(name=foo)
         proj_filter = Project_details.objects.filter(proj_category=category)
-        context = {"projects": proj_filter, "category":category}
+        context = {"projects": proj_filter, "category":category, "insert_date":date, "insert_msg": msg}
         return render(request, 'portfolio.html', context)
     except:
         messages.success(request, ("That category does not exist!!!"))
@@ -94,12 +111,12 @@ def portfolio_cat(request, foo):
         
 def portfolio(request):
     projects = Project_details.objects.all()
-    context = {"projects": projects}
+    context = {"projects": projects, "insert_date":date, "insert_msg": msg}
     return render(request, "portfolio.html", context)
 
 
 def portfolio_details(request, pk):
     proj_det = Project_details.objects.get(id=pk)
-    context = {"proj_det": proj_det}
+    context = {"proj_det": proj_det, "insert_date":date, "insert_msg": msg}
     return render(request, "portfolio-details.html", context)
 

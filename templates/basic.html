@@ -53,13 +53,30 @@
       <img src="{% static "assets/img/img.png" %}" alt="" class="img-fluid rounded-circle">
     </div>
 
-    <a href="index.html" class="logo d-flex align-items-center justify-content-center">
+    <a href="index.html" class="logo align-items-center justify-content-center">
       <!-- Uncomment the line below if you also wish to use an image logo -->
       <!-- <img src="assets/img/logo.png" alt=""> -->
       <h5 class="sitename">
         Welcome {{user.username}}
       </h5>
+      <br>
+      <center>
+        <b>
+          <span class="auto-type"></span>
+        </b>
+      </center>
+      
     </a>
+
+      <center>
+        <small>
+          <b>
+            {{insert_date}}
+          </b>
+        </small>
+      </center>
+
+    
 
     <div class="social-links text-center">
       <a href="https://x.com/JChibuzor78315" class="twitter"><i class="bi bi-twitter-x"></i></a>
@@ -154,6 +171,19 @@
 
   <!-- Main JS File -->
   <script src="{% static "assets/js/main.js" %}"></script>
+  
+  <script>
+     /**
+   * Auto type for greeting
+   */
+  var typed = new Typed(".auto-type", {
+    strings: ["{{insert_msg}}"],
+    typeSpeed: 500,
+    backSpeed: 500,
+    loop: true,
+    
+  });
+  </script>
 
 </body>
 
