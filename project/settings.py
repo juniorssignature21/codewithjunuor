@@ -28,7 +28,7 @@ DEBUG = True
 
 # ALLOWED_HOSTS = []
 # ALLOWED_HOSTS = ['codewithjunior.onrender.com']
-ALLOWED_HOSTS = ['codewithjunuor.onrender.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['codewithjunuor.onrender.com', '127.0.0.1', 'localhost','www.codewithjunior.name.ng']
 
 
 
