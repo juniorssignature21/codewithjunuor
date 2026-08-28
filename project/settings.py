@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-$!!v$jwb!e)h16bpakbgd&=n184x-o5*r#z)&#mxnb2&3osq9!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # ALLOWED_HOSTS = []
 # ALLOWED_HOSTS = ['codewithjunior.onrender.com']
@@ -147,3 +147,5 @@ MESSAGE_TAGS = {
 
 # STATIC_ROOT = BASE_DIR / "static"
 # STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+WHITENOISE_ROOT = BASE_DIR / "public"
